@@ -15,6 +15,10 @@ content-type: application/json
 
 GET http://localhost:5181/todos
 
+###
+
+GET http://localhost:5181/tasks/1
+
 {
   "id" : 1;
   "name" : "Write demo01";
