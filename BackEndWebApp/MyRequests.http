@@ -1,3 +1,38 @@
 # For more info on HTTP files go to https://aka.ms/vs/httpfile
 
-GET http://localhost:5181/
+DELETE http://localhost:5181/todos
+
+###
+
+GET http://localhost:5181/todos/2
+
+###
+
+POST http://localhost:5181/todos
+content-type: application/json
+
+###
+
+GET http://localhost:5181/todos
+
+{
+  "id" : 1;
+  "name" : "Write demo01";
+  "dueDate" : "2024-04-20";
+  "isCompleted" : false;
+}
+
+{
+  "id" : 2;
+  "name" : "Write demo02";
+  "dueDate" : "2024-04-22";
+  "isCompleted" : false;
+}
+
+{
+  "id" : 3;
+  "name" : "Write demo03";
+  "dueDate" : "2024-04-25";
+  "isCompleted" : true;
+}
+
