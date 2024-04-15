@@ -63,7 +63,7 @@ app.Run();
 
 public record Todo(int Id, string Name, DateTime DueDate, bool IsCompleted);
 
-class InMemoryTaskService :  ITaskService
+class InMemoryTaskService : ITaskService
 {
     private readonly List<Todo> _todos = [];
     public Todo? GetTodoById(int id)
