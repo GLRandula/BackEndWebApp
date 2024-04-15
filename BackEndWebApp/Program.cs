@@ -40,10 +40,12 @@ app.MapPost("/todos", (Todo task) =>
      {
          errors.Add(nameof(Todo.DueDate), ["Cannot have due date in the past."]);
      }
+
      if (taskArgument.IsCompleted)
      {
          errors.Add(nameof(Todo.IsCompleted), ["Cannot add completed todo."]);
      }
+
      if (errors.Count > 0)
      {
          return Results.ValidationProblem(errors);
@@ -60,3 +62,26 @@ app.MapDelete("/todos/{id}", (int id) =>
 app.Run();
 
 public record Todo(int Id, string Name, DateTime DueDate, bool IsCompleted);
+
+class InMemoryTaskService :  ITaskService
+{
+    private readonly List<Todo> _todos = [];
+    public Todo? GetTodoById(int id)
+    {
+        return _todos.SingleOrDefault(t => id == t.Id);
+    }
+    public List<Todo> GetTodos()
+    {
+        return _todos;
+    }
+    public void DeleteTodoById(int id)
+    {
+        _todos.RemoveAll(task => id == task.Id);
+    }
+    public Todo AddTodo(Todo task)
+    {
+        _todos.Add(task);
+        return task;
+    }
+}
+
