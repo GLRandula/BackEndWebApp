@@ -105,10 +105,5 @@ class InMemoryTaskService : ITaskService
     {
         throw new NotImplementedException();
     }
-
-    object ITaskService.GetTodos()
-    {
-        throw new NotImplementedException();
-    }
 }
 
