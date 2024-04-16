@@ -1,2 +1,2 @@
 # BackEndWebApp
-GET, POST, DELETE, UPDATE Methods using C#
+GET, POST, DELETE, UPDATE the HTTP requests using C#
