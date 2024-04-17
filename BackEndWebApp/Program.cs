@@ -20,13 +20,18 @@ var todos = new List<Todo>();
 
 app.MapGet("/todos", (ITaskService service)  => service.GetTodos());
 
-app.MapGet("/todos/{id}", Results<Ok<Todo>, NotFound> (int id, ITaskService service) =>
-//app.MapGet("/todos/{id}", async (int id, ITaskService service) =>
+//app.MapGet("/todos/{id}", Results<Ok<Todo>, NotFound> (int id, ITaskService service) =>
+app.MapGet("/todos/{id}", async(int id, ITaskService service) =>
 {
     var targetTodo = service.GetTodoById(id);
-    return targetTodo is null
-        ? TypedResults.NotFound()
-        : TypedResults.Ok(targetTodo);
+    if (targetTodo is null)
+    {
+        return TypedResults.NotFound();
+    }
+    else
+    {
+        return TypedResults.Ok(targetTodo);
+    }
 });
 
 app.MapPost("/todos", (Todo task, ITaskService service) =>
@@ -102,6 +107,11 @@ class InMemoryTaskService : ITaskService
     }
 
     object ITaskService.GetTodoById(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    object ITaskService.GetTodos()
     {
         throw new NotImplementedException();
     }
