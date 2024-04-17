@@ -25,18 +25,10 @@ GET http://localhost:5181/tasks/1
   "dueDate" : "2024-04-20";
   "isCompleted" : false;
 }
-
 {
   "id" : 2;
   "name" : "Write demo02";
   "dueDate" : "2024-04-22";
   "isCompleted" : false;
-}
-
-{
-  "id" : 3;
-  "name" : "Write demo03";
-  "dueDate" : "2024-04-25";
-  "isCompleted" : true;
 }
 

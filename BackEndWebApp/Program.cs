@@ -6,7 +6,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSingleton<ITaskService>(new InMemoryTaskService());
 
 var app = builder.Build();
-
 app.UseRewriter(new RewriteOptions().AddRedirect("tasks/(.*)", "todos/$1"));
 
 app.Use(async (context, next) =>
@@ -105,7 +104,6 @@ class InMemoryTaskService : ITaskService
     {
         throw new NotImplementedException();
     }
-
     object ITaskService.GetTodoById(int id)
     {
         throw new NotImplementedException();
